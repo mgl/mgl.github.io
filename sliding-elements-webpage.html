@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sliding Elements</title>
+        <style>
+            body,
+            html {
+                height: 100%;
+                margin: 0;
+                overflow: hidden;
+                font-family: Arial, sans-serif;
+            }
+
+            .container {
+                position: relative;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+                overflow: hidden;
+            }
+
+            .image {
+                position: absolute;
+                top: -100%;
+                left: 50%;
+                transform: translateX(-50%);
+                max-height: 80%;
+                width: auto;
+                transition: top 2s;
+            }
+
+            .text {
+                position: absolute;
+                bottom: -100%;
+                font-size: 3em;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: white;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                text-shadow:
+                    2px 2px 0 #000,
+                    -2px -2px 0 #000,
+                    2px -2px 0 #000,
+                    -2px 2px 0 #000,
+                    0 2px 0 #000,
+                    2px 0 0 #000,
+                    0 -2px 0 #000,
+                    -2px 0 0 #000;
+                transition: bottom 2s;
+                text-align: center;
+                width: 100%;
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+
+            .start-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px 20px;
+                font-size: 1.2em;
+                cursor: pointer;
+                z-index: 10;
+            }
+
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <img src="america.png" alt="Uncle Sam pointing" class="image">
+            <div class="text">Tu as perdu</div>
+            <button class="start-button" onclick="startExperience()">Commencer</button>
+        </div>
+        <audio id="backgroundMusic" loop>
+            <source src="cucaracha.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <script>
+            function startExperience() {
+                document.querySelector('.start-button').classList.add('hidden')
+                document.querySelector('.image').style.top = '10%'
+                setTimeout(() => {
+                    document.querySelector('.text').style.bottom = '10%'
+                }, 1000)
+                document.getElementById('backgroundMusic').play()
+            }
+        </script>
+    </body>
+
+</html>
